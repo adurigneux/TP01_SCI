@@ -1,9 +1,9 @@
 
 public abstract class Agent {
 	
-	private Environnement env;
-	private int x;
-	private int y;
+	protected Environnement env;
+	protected int x;
+	protected int y;
 	
 	public Agent(Environnement env, int x, int y) {
 		this.env = env;
