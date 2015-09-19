@@ -11,6 +11,13 @@ public class Environnement {
         this.espace = new Agent[tailleX][tailleY];
     }
 
+
+    public boolean put(int x, int y, Agent agent) {
+        if (!this.estVide(x, y) || this.estEnDehors(x, y)) return false;
+        this.espace[x][y] = agent;
+        return true;
+    }
+
     public Agent get(int x, int y) {
         return this.espace[x][y];
     }
