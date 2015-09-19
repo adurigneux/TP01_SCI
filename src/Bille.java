@@ -3,7 +3,7 @@ import java.awt.Color;
 public class Bille extends Agent {
 
     private int numero;
-    private int vitesse;
+    private int vitesse; //(vitesse = nombre de cases par "tour")
     private int sens;
     private Color couleur;
 
@@ -55,11 +55,11 @@ public class Bille extends Agent {
         switch (sens) {
             case Bille.UPPER_CENTER:
 
-                newY = y + 1;
+                newY = y + vitesse;
 
                 if (this.getEnv().estEnDehors(x, newY) || !this.getEnv().estVide(x, newY)) {
                     sens = Bille.LOWER_CENTER;
-                    y = y - 1;
+                    y = y - vitesse;
                 } else {
                     y = newY;
                 }
@@ -67,13 +67,13 @@ public class Bille extends Agent {
                 break;
             case Bille.UPPER_LEFT:
 
-                newX = x - 1;
-                newY = y - 1;
+                newX = x - vitesse;
+                newY = y - vitesse;
 
                 if (this.getEnv().estEnDehors(newX, newY) || !this.getEnv().estVide(newX, newY)) {
                     sens = Bille.LOWER_RIGHT;
-                    x = x + 1;
-                    y = y + 1;
+                    x = x + vitesse;
+                    y = y + vitesse;
                 } else {
                     x = newX;
                     y = newY;
@@ -82,13 +82,13 @@ public class Bille extends Agent {
                 break;
             case Bille.UPPER_RIGHT:
 
-                newX = x - 1;
-                newY = y + 1;
+                newX = x - vitesse;
+                newY = y + vitesse;
 
                 if (this.getEnv().estEnDehors(newX, newY) || !this.getEnv().estVide(newX, newY)) {
                     sens = Bille.LOWER_LEFT;
-                    x = x + 1;
-                    y = y - 1;
+                    x = x + vitesse;
+                    y = y - vitesse;
                 } else {
                     x = newX;
                     y = newY;
@@ -97,11 +97,11 @@ public class Bille extends Agent {
                 break;
             case Bille.LOWER_CENTER:
 
-                newY = y - 1;
+                newY = y - vitesse;
 
                 if (this.getEnv().estEnDehors(x, newY) || !this.getEnv().estVide(x, newY)) {
                     sens = Bille.UPPER_CENTER;
-                    y = y + 1;
+                    y = y + vitesse;
                 } else {
                     y = newY;
                 }
@@ -109,13 +109,13 @@ public class Bille extends Agent {
                 break;
             case Bille.LOWER_LEFT:
 
-                newX = x - 1;
-                newY = y + 1;
+                newX = x - vitesse;
+                newY = y + vitesse;
 
                 if (this.getEnv().estEnDehors(newX, newY) || !this.getEnv().estVide(newX, newY)) {
                     sens = Bille.UPPER_RIGHT;
-                    x = x + 1;
-                    x = y - 1;
+                    x = x + vitesse;
+                    x = y - vitesse;
                 } else {
                     x = newX;
                     y = newY;
@@ -124,13 +124,13 @@ public class Bille extends Agent {
                 break;
             case Bille.LOWER_RIGHT:
 
-                newX = x + 1;
-                newY = y - 1;
+                newX = x + vitesse;
+                newY = y - vitesse;
 
                 if (this.getEnv().estEnDehors(newX, newY) || !this.getEnv().estVide(newX, newY)) {
                     sens = Bille.UPPER_LEFT;
-                    x = x - 1;
-                    x = y + 1;
+                    x = x - vitesse;
+                    x = y + vitesse;
                 } else {
                     x = newX;
                     y = newY;
@@ -139,11 +139,11 @@ public class Bille extends Agent {
                 break;
             case Bille.RIGHT:
 
-                newY = y + 1;
+                newY = y + vitesse;
 
                 if (this.getEnv().estEnDehors(x, newY) || !this.getEnv().estVide(x, newY)) {
                     sens = Bille.LEFT;
-                    y = y - 1;
+                    y = y - vitesse;
                 } else {
                     y = newY;
                 }
@@ -152,11 +152,11 @@ public class Bille extends Agent {
                 break;
             case Bille.LEFT:
 
-                newY = y - 1;
+                newY = y - vitesse;
 
                 if (this.getEnv().estEnDehors(x, newY) || !this.getEnv().estVide(x, newY)) {
                     sens = Bille.LEFT;
-                    y = y + 1;
+                    y = y + vitesse;
                 } else {
                     y = newY;
                 }

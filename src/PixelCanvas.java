@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
-public class PixelCanvas extends Canvas {
+public class PixelCanvas extends Canvas implements Observer {
 
     //valeurs à modier via la ligne de commande
     private static final int WIDTH = 400;
@@ -21,6 +23,11 @@ public class PixelCanvas extends Canvas {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setVisible(true);
+    }
+
+    @Override
+    public void update(Observable observable, Object objectConcerne) {
+        repaint();
     }
 
     @Override

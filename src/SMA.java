@@ -1,7 +1,8 @@
 import java.util.List;
+import java.util.Observable;
 
 
-public abstract class SMA {
+public abstract class SMA extends Observable {
 	
 	protected Environnement env;
 	protected List<Agent> agents;
