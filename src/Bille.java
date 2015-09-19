@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Random;
 
 public class Bille extends Agent {
 
@@ -21,6 +22,18 @@ public class Bille extends Agent {
         this.numero = numero;
         this.vitesse = vitesse;
         this.sens = sens;
+    }
+
+    public Bille(Environnement env, int numero) {
+        super(env, 0, 0);
+        Random random = new Random();
+
+        this.x = random.nextInt(env.getTailleX());
+        this.y = random.nextInt(env.getTailleY());
+
+        this.numero = numero;
+        this.vitesse = random.nextInt(9) + 1; //retirer le 0
+        this.sens = random.nextInt(7) + 1;
     }
 
     public int getNumero() {
