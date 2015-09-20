@@ -24,7 +24,7 @@ public class BilleSMA extends SMA {
             Collections.shuffle(agents);
             for (Agent a : agents) {
                 //clear env place before
-                this.env.clear(a.getX(), a.getY());
+                //   this.env.clear(a.getX(), a.getY());
                 a.decide();
 
                 //System.out.println(a.toString());

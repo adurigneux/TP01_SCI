@@ -71,11 +71,11 @@ public class Bille extends Agent {
         switch (sens) {
             case Bille.UPPER_CENTER:
 
-                newY = y + vitesse;
+                newY = y - vitesse;
 
                 if (this.getEnv().estEnDehors(x, newY)) {
                     sens = Bille.LOWER_CENTER;
-                    y = y - vitesse;
+                    y = y + vitesse;
                 } else {
                     y = newY;
                 }
@@ -98,13 +98,13 @@ public class Bille extends Agent {
                 break;
             case Bille.UPPER_RIGHT:
 
-                newX = x - vitesse;
-                newY = y + vitesse;
+                newX = x + vitesse;
+                newY = y - vitesse;
 
                 if (this.getEnv().estEnDehors(newX, newY)) {
                     sens = Bille.LOWER_LEFT;
-                    x = x + vitesse;
-                    y = y - vitesse;
+                    x = x - vitesse;
+                    y = y + vitesse;
                 } else {
                     x = newX;
                     y = newY;
@@ -113,11 +113,11 @@ public class Bille extends Agent {
                 break;
             case Bille.LOWER_CENTER:
 
-                newY = y - vitesse;
+                newY = y + vitesse;
 
                 if (this.getEnv().estEnDehors(x, newY)) {
                     sens = Bille.UPPER_CENTER;
-                    y = y + vitesse;
+                    y = y - vitesse;
                 } else {
                     y = newY;
                 }
@@ -141,12 +141,12 @@ public class Bille extends Agent {
             case Bille.LOWER_RIGHT:
 
                 newX = x + vitesse;
-                newY = y - vitesse;
+                newY = y + vitesse;
 
                 if (this.getEnv().estEnDehors(newX, newY)) {
                     sens = Bille.UPPER_LEFT;
                     x = x - vitesse;
-                    x = y + vitesse;
+                    x = y - vitesse;
                 } else {
                     x = newX;
                     y = newY;
@@ -155,26 +155,26 @@ public class Bille extends Agent {
                 break;
             case Bille.RIGHT:
 
-                newY = y + vitesse;
+                newX = x + vitesse;
 
-                if (this.getEnv().estEnDehors(x, newY)) {
+                if (this.getEnv().estEnDehors(newX, y)) {
                     sens = Bille.LEFT;
-                    y = y - vitesse;
+                    x = x - vitesse;
                 } else {
-                    y = newY;
+                    x = newX;
                 }
 
 
                 break;
             case Bille.LEFT:
 
-                newY = y - vitesse;
+                newX = x - vitesse;
 
-                if (this.getEnv().estEnDehors(x, newY)) {
-                    sens = Bille.LEFT;
-                    y = y + vitesse;
+                if (this.getEnv().estEnDehors(newX, y)) {
+                    sens = Bille.RIGHT;
+                    x = x + vitesse;
                 } else {
-                    y = newY;
+                    x = newX;
                 }
 
                 break;
