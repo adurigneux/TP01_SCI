@@ -20,7 +20,7 @@ public class Environnement {
     }
 
     public boolean put(int x, int y, Agent agent) {
-        if (!this.estVide(x, y) || this.estEnDehors(x, y)) return false;
+
         this.espace[x][y] = agent;
         return true;
     }
@@ -30,7 +30,15 @@ public class Environnement {
     }
 
     public boolean estEnDehors(int x, int y) {
-        return !(x >= 0 && x < this.tailleX && y >= 0 && y < tailleY);
+        return (estDehorsX(x) && estDehorsY(y));
+    }
+
+    public boolean estDehorsX(int x) {
+        return !(x >= 0 && x < this.tailleX);
+    }
+
+    public boolean estDehorsY(int y) {
+        return !(y >= 0 && y < this.tailleY);
     }
 
     public boolean estVide(int x, int y) {

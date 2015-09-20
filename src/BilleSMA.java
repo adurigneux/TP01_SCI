@@ -33,12 +33,7 @@ public class BilleSMA extends SMA {
 
             setChanged();
             notifyObservers();
-            try {
-                Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-                //do nothing
-                //e.printStackTrace();
-            }
+
         }
 
     }

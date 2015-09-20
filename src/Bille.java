@@ -73,7 +73,7 @@ public class Bille extends Agent {
 
                 newY = y - vitesse;
 
-                if (this.getEnv().estEnDehors(x, newY)) {
+                if (this.getEnv().estDehorsY(newY)) {
                     sens = Bille.LOWER_CENTER;
                     y = y + vitesse;
                 } else {
@@ -90,6 +90,14 @@ public class Bille extends Agent {
                     sens = Bille.LOWER_RIGHT;
                     x = x + vitesse;
                     y = y + vitesse;
+                } else if (this.getEnv().estDehorsX(newX)) {
+                    sens = Bille.UPPER_RIGHT;
+                    x = x + vitesse;
+                    y = newY;
+                } else if (this.getEnv().estDehorsY(newY)) {
+                    sens = Bille.LOWER_LEFT;
+                    y = y + vitesse;
+                    x = newX;
                 } else {
                     x = newX;
                     y = newY;
@@ -101,21 +109,31 @@ public class Bille extends Agent {
                 newX = x + vitesse;
                 newY = y - vitesse;
 
+
                 if (this.getEnv().estEnDehors(newX, newY)) {
                     sens = Bille.LOWER_LEFT;
                     x = x - vitesse;
                     y = y + vitesse;
+                } else if (this.getEnv().estDehorsX(newX)) {
+                    sens = Bille.UPPER_LEFT;
+                    x = x - vitesse;
+                    y = newY;
+                } else if (this.getEnv().estDehorsY(newY)) {
+                    sens = Bille.LOWER_RIGHT;
+                    y = y + vitesse;
+                    x = newX;
                 } else {
                     x = newX;
                     y = newY;
                 }
+
 
                 break;
             case Bille.LOWER_CENTER:
 
                 newY = y + vitesse;
 
-                if (this.getEnv().estEnDehors(x, newY)) {
+                if (this.getEnv().estDehorsY(newY)) {
                     sens = Bille.UPPER_CENTER;
                     y = y - vitesse;
                 } else {
@@ -131,7 +149,15 @@ public class Bille extends Agent {
                 if (this.getEnv().estEnDehors(newX, newY)) {
                     sens = Bille.UPPER_RIGHT;
                     x = x + vitesse;
-                    x = y - vitesse;
+                    y = y - vitesse;
+                } else if (this.getEnv().estDehorsX(newX)) {
+                    sens = Bille.LOWER_RIGHT;
+                    x = x + vitesse;
+                    y = newY;
+                } else if (this.getEnv().estDehorsY(newY)) {
+                    sens = Bille.UPPER_LEFT;
+                    y = y - vitesse;
+                    x = newX;
                 } else {
                     x = newX;
                     y = newY;
@@ -146,7 +172,15 @@ public class Bille extends Agent {
                 if (this.getEnv().estEnDehors(newX, newY)) {
                     sens = Bille.UPPER_LEFT;
                     x = x - vitesse;
-                    x = y - vitesse;
+                    y = y - vitesse;
+                } else if (this.getEnv().estDehorsX(newX)) {
+                    sens = Bille.LOWER_LEFT;
+                    x = x - vitesse;
+                    y = newY;
+                } else if (this.getEnv().estDehorsY(newY)) {
+                    sens = Bille.UPPER_RIGHT;
+                    y = y - vitesse;
+                    x = newX;
                 } else {
                     x = newX;
                     y = newY;
@@ -157,7 +191,7 @@ public class Bille extends Agent {
 
                 newX = x + vitesse;
 
-                if (this.getEnv().estEnDehors(newX, y)) {
+                if (this.getEnv().estDehorsX(newX)) {
                     sens = Bille.LEFT;
                     x = x - vitesse;
                 } else {
@@ -170,7 +204,7 @@ public class Bille extends Agent {
 
                 newX = x - vitesse;
 
-                if (this.getEnv().estEnDehors(newX, y)) {
+                if (this.getEnv().estDehorsX(newX)) {
                     sens = Bille.RIGHT;
                     x = x + vitesse;
                 } else {
