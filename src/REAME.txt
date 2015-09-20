@@ -1,4 +1,14 @@
-execution test :
+
 Usage : java Simulation tailleX tailleY tailleBilleCase nombreBilles nombreTours tempsArret
 
-Args exemple = 50 50 10 50 100000 100
+tailleX = Taille de la grille en X ( Taille de la fenetre en X * TAilleBilleCase)
+tailleY = Taille de la grille en Y ( Taille de la fenetre en Y * TAilleBilleCase)
+tailleBilleCase = Nombre de pixel par case ( si x = 10 et Taille = 2, alors x = 20 pour 10 elements d'une taille de 2 pixels - idem en y)
+nombreBilles = Nombre de bille dans la grille
+nombreTours = Nombre total d'itération de l'algorithme
+tempsArret = Temps en milliseconde que le programme attendra entre chaque execution pour le rafraichissement des billes
+
+exemple = "java Simulation 50 50 10 50 100000 100"
+
+Ce qui donnera une grille de 50x50 contenant des billes de 10pixels, le tout contenant 50 billes.
+Il y a 100000 itérations et l'attente entre chaque rafraichissement est de 100 millisecondes.

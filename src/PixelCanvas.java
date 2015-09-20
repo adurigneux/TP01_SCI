@@ -17,6 +17,7 @@ public class PixelCanvas extends Canvas implements Observer {
         frame = new JFrame();
 
         frame.add(this);
+        frame.setTitle("Billes - Antoine Durigneux & Quentin Warnant  (V 1.0)");
 
         // set the jframe size and location, and make it visible
         setPreferredSize(new Dimension((width * tailleCase) + 2, (height * tailleCase) + 2));

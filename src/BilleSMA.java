@@ -36,6 +36,7 @@ public class BilleSMA extends SMA {
                     //System.out.println(a.toString());
                     env.put(a.getX(), a.getY(), a);
                 }
+
                 setChanged();
                 notifyObservers();
 
