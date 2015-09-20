@@ -40,5 +40,13 @@ public abstract class Agent {
 	}
 	
 	public abstract void decide();
-	
+
+	@Override
+	public String toString() {
+		return "Agent{" +
+				"env=" + env +
+				", x=" + x +
+				", y=" + y +
+				'}';
+	}
 }

@@ -179,4 +179,13 @@ public class Bille extends Agent {
 
     }
 
+    @Override
+    public String toString() {
+        return "Bille{" +
+                "numero=" + numero +
+                ", vitesse=" + vitesse +
+                ", sens=" + sens +
+                ", couleur=" + couleur +
+                "} " + super.toString();
+    }
 }

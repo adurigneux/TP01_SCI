@@ -24,6 +24,7 @@ public class BilleSMA extends SMA {
             Collections.shuffle(agents);
             for (Agent a : agents) {
                 a.decide();
+                System.out.println(a.toString());
             }
 
             setChanged();

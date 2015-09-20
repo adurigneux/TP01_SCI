@@ -7,7 +7,7 @@ public class Simulation {
 	public static void main(String[] args) {
 
 		if(args.length < 5) {
-			System.out.println("Usage : Java Simulation tailleX tailleY tailleBilleCase nombreBilles nombreTours");
+			System.out.println("Usage : java Simulation tailleX tailleY tailleBilleCase nombreBilles nombreTours");
 			return;
 		}
 
