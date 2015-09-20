@@ -18,17 +18,23 @@ public class BilleSMA extends SMA {
     }
 
     @Override
-    public void run(int nbTour) {
+    public void run(int nbTour, int sleepTime) {
 
         for (int i = 0; i < nbTour; i++) {
             Collections.shuffle(agents);
             for (Agent a : agents) {
                 a.decide();
-                System.out.println(a.toString());
+                //System.out.println(a.toString());
             }
 
             setChanged();
             notifyObservers();
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                //do nothing
+                //e.printStackTrace();
+            }
         }
 
     }

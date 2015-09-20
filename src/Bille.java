@@ -1,12 +1,7 @@
-import java.awt.Color;
+import java.awt.*;
 import java.util.Random;
 
 public class Bille extends Agent {
-
-    private int numero;
-    private int vitesse; //(vitesse = nombre de cases par "tour")
-    private int sens;
-    private Color couleur;
 
     public static final int UPPER_LEFT = 1;
     public static final int UPPER_RIGHT = 2;
@@ -16,6 +11,10 @@ public class Bille extends Agent {
     public static final int LOWER_CENTER = 6;
     public static final int RIGHT = 7;
     public static final int LEFT = 8;
+    private int numero;
+    private int vitesse; //(vitesse = nombre de cases par "tour")
+    private int sens;
+    private Color couleur;
 
     public Bille(Environnement env, int numero, int vitesse, int x, int y, int sens) {
         super(env, x, y);
@@ -30,6 +29,8 @@ public class Bille extends Agent {
 
         this.x = random.nextInt(env.getTailleX());
         this.y = random.nextInt(env.getTailleY());
+
+        this.couleur = randomColor();
 
         this.numero = numero;
         this.vitesse = random.nextInt(9) + 1; //retirer le 0
@@ -60,6 +61,13 @@ public class Bille extends Agent {
         this.sens = sens;
     }
 
+    public Color getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(Color couleur) {
+        this.couleur = couleur;
+    }
 
     @Override
     public void decide() {
@@ -177,6 +185,11 @@ public class Bille extends Agent {
                 break;
         }
 
+    }
+
+    private Color randomColor() {
+        Random random = new Random();
+        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
     }
 
     @Override

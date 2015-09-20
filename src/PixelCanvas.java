@@ -1,32 +1,45 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Random;
+
 
 public class PixelCanvas extends Canvas implements Observer {
 
-    //valeurs à modier via la ligne de commande
-    private static final int WIDTH = 400;
-    private static final int HEIGHT = 400;
-    private static final int PIXEL_SIZE = 4;
 
-    //a supprimer et laisser la couleur du pixel a desiner
-    private static final Random random = new Random();
+    private JFrame frame;
+    private int tailleCase, width, height;
+    private List<Agent> agents;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
 
-        frame.setSize(WIDTH, HEIGHT);
-        frame.add(new PixelCanvas());
-        frame.setResizable(false);
+    PixelCanvas(int width, int height, int tailleCase) {
+        frame = new JFrame();
+
+        frame.add(this);
+
+        // set the jframe size and location, and make it visible
+        setPreferredSize(new Dimension((width * tailleCase) + 2, (height * tailleCase) + 2));
+
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setVisible(true);
+
+        this.tailleCase = tailleCase;
+        this.width = width * tailleCase;
+        this.height = height * tailleCase;
     }
 
     @Override
     public void update(Observable observable, Object objectConcerne) {
+        if (observable instanceof BilleSMA) {
+            agents = ((BilleSMA) observable).agents;
+            // System.out.println("Nouveau tour");
+        }
+
         repaint();
     }
 
@@ -34,22 +47,20 @@ public class PixelCanvas extends Canvas implements Observer {
     public void paint(Graphics g) {
         super.paint(g);
         //clear everything
-        g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.clearRect(0, 0, width, height);
+        g.setColor(Color.black);
+        g.drawRect(0, 0, width, height);
 
-
-        //bornes de x->y verifier tout selon la taille et les emplacements des pixels etc
-        for (int x = 0; x < WIDTH; x += PIXEL_SIZE) {
-            for (int y = 0; y < HEIGHT; y += PIXEL_SIZE) {
-
-                //use color of pixel
-                g.setColor(randomColor());
-                //ici dessiner tous les pixels
-                g.fillRect(x, y, PIXEL_SIZE, PIXEL_SIZE);
+        if (agents != null) {
+            for (Agent agent : agents) {
+                Bille b = (Bille) agent;
+                g.setColor(b.getCouleur());
+                g.fillRect(b.getX() * tailleCase, b.getY() * tailleCase, tailleCase, tailleCase);
             }
         }
+
+
     }
 
-    private Color randomColor() {
-        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-    }
+
 }

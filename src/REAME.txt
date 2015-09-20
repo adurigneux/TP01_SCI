@@ -1,0 +1,4 @@
+execution test :
+Usage : java Simulation tailleX tailleY tailleBilleCase nombreBilles nombreTours tempsArret
+
+Args exemple = 50 50 10 50 100000 100
