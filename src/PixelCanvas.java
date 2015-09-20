@@ -20,9 +20,10 @@ public class PixelCanvas extends Canvas implements Observer {
 
         // set the jframe size and location, and make it visible
         setPreferredSize(new Dimension((width * tailleCase) + 2, (height * tailleCase) + 2));
-
+        frame.setResizable(false);
         frame.pack();
         frame.setLocationRelativeTo(null);
+
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +48,7 @@ public class PixelCanvas extends Canvas implements Observer {
     public void paint(Graphics g) {
         super.paint(g);
         //clear everything
-        g.clearRect(0, 0, width, height);
+        //  g.clearRect(0, 0, width, height);
         g.setColor(Color.black);
         g.drawRect(0, 0, width, height);
 

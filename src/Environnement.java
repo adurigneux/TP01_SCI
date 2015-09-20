@@ -8,7 +8,7 @@ public class Environnement {
         this.tailleX = tailleX;
         this.tailleY = tailleY;
 
-        this.espace = new Agent[tailleX][tailleY];
+        this.espace = new Agent[tailleX + 1][tailleY + 1];
     }
 
     public int getTailleX() {
@@ -35,6 +35,10 @@ public class Environnement {
 
     public boolean estVide(int x, int y) {
         return this.get(x, y) == null;
+    }
+
+    public void clear(int x, int y) {
+        this.espace[x][y] = null;
     }
 
 }
